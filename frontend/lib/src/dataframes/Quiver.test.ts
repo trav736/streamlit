@@ -71,9 +71,9 @@ describe("Quiver", () => {
       })
 
       test("indexNames", () => {
-        const mockElement = { data: NAMED_INDEX }
-        const q = new Quiver(mockElement)
-        expect(q.columnTypes[0]).toStrictEqual({
+        const thisMockElement = { data: NAMED_INDEX }
+        const thisQ = new Quiver(thisMockElement)
+        expect(thisQ.columnTypes[0]).toStrictEqual({
           type: DataFrameCellType.INDEX,
           arrowField: expect.any(Field),
           pandasType: {

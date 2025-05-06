@@ -69,7 +69,7 @@ describe("Selectbox widget", () => {
   })
 
   it("pass labelVisibility prop to StyledWidgetLabel correctly when hidden", () => {
-    const props = getProps({
+    props = getProps({
       labelVisibility: LabelVisibilityOptions.Hidden,
     })
     render(<Selectbox {...props} />)
@@ -79,7 +79,7 @@ describe("Selectbox widget", () => {
   })
 
   it("pass labelVisibility prop to StyledWidgetLabel correctly when collapsed", () => {
-    const props = getProps({
+    props = getProps({
       labelVisibility: LabelVisibilityOptions.Collapsed,
     })
     render(<Selectbox {...props} />)

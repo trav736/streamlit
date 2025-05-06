@@ -145,8 +145,8 @@ describe("withMapboxToken", () => {
       })
 
       await waitFor(() => {
-        const element = screen.getByTestId("mock-component")
-        expect(element.textContent).toBe(mockMapboxToken)
+        const foundElement = screen.getByTestId("mock-component")
+        expect(foundElement.textContent).toBe(mockMapboxToken)
       })
     })
 
@@ -160,8 +160,8 @@ describe("withMapboxToken", () => {
       })
 
       await waitFor(() => {
-        const element = screen.getByTestId("mock-component")
-        expect(element.textContent).toBe(LIB_CONFIG_TOKEN)
+        const foundElement = screen.getByTestId("mock-component")
+        expect(foundElement.textContent).toBe(LIB_CONFIG_TOKEN)
       })
     })
   })
