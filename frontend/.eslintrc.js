@@ -187,8 +187,6 @@ module.exports = {
     // Surpresses compile warnings for vars already declared in the upper scope
     "@typescript-eslint/no-shadow": "off",
     // Surpresses compile warnings for use of an exported name as a property on the default (ex: React.useState vs. useState)
-    // TODO: Go through each instance and resolve -> import React, { useState } from "react" & call useState directly
-    "import/no-named-as-default-member": "off",
     "import/prefer-default-export": "off",
     "max-classes-per-file": "off",
     "no-shadow": "off",
