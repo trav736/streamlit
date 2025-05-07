@@ -45,10 +45,12 @@ import ElementNodeRenderer from "./ElementNodeRenderer"
 import {
   StyledColumn,
   StyledHorizontalBlock,
+  StyledLayoutStylesWrapper,
   StyledVerticalBlock,
   StyledVerticalBlockBorderWrapper,
   StyledVerticalBlockBorderWrapperProps,
 } from "./styled-components"
+import { useLayoutStyles } from "../Layout/useLayoutStyles"
 
 export interface BlockPropsWithoutWidth extends BaseBlockProps {
   node: BlockNode
@@ -86,6 +88,8 @@ const BlockNodeRenderer = (props: BlockPropsWithoutWidth): ReactElement => {
       disableFullscreenMode={disableFullscreenMode}
     />
   )
+
+  let containerElement: ReactElement | undefined
 
   if (node.deltaBlock.dialog) {
     return (
@@ -144,7 +148,7 @@ const BlockNodeRenderer = (props: BlockPropsWithoutWidth): ReactElement => {
   }
 
   if (node.deltaBlock.chatMessage) {
-    return (
+    containerElement = (
       <ChatMessage
         element={node.deltaBlock.chatMessage as BlockProto.ChatMessage}
         endpoints={props.endpoints}
@@ -181,6 +185,23 @@ const BlockNodeRenderer = (props: BlockPropsWithoutWidth): ReactElement => {
     }
     const tabsProps: TabProps = { ...childProps, isStale, renderTabContent }
     return <Tabs {...tabsProps} />
+  }
+
+  const styles = useLayoutStyles({
+    element:
+      (node.deltaBlock.type && node.deltaBlock[node.deltaBlock.type]) ||
+      undefined,
+  })
+
+  if (containerElement) {
+    return (
+      <StyledLayoutStylesWrapper
+        data-testid="stLayoutStylesWrapper"
+        {...styles}
+      >
+        {containerElement}
+      </StyledLayoutStylesWrapper>
+    )
   }
 
   return child
